@@ -28,4 +28,15 @@ CHIP Memory {
 
     PARTS:
     // Put your code here:
+    // 0110 0000 0000 0000 : 0x6000 - KeyBoard
+    // 010? ???? ???? ???? : 0x4000 ~ 0x5FFFF - Screen
+    // 00?? ???? ???? ???? : < 0x4000 - RAM 
+    DMux4Way(in=load, sel=address[13..14], a=ram1, b=ram2, c=screen, d=keyboard);
+    Or(a=ram1, b=ram2, out=ram);
+
+    RAM16K(in=in, load=ram, address=address[0..13], out=out1);
+    Screen(in=in, load=screen, address=address[0..12], out=out2);
+    Keyboard(out=out3);
+    
+    Mux4Way16(a=out1, b=out1, c=out2, d=out3, sel=address[13..14], out=out);
 }
