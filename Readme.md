@@ -1,1 +1,3 @@
-A repo for Coursea *Nand to Tetries*.# Nand2Tetris
+# Nand to Trtries
+
+A repo for Coursea *Nand to Tetries*.
